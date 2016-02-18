@@ -1,0 +1,21 @@
+# DO NOT EDIT!
+# This file is puppet generated.
+
+protocol bfd backbone {
+  interface 'bb-*' {
+    interval 200 ms;
+    multiplier 10;
+  }
+}
+
+protocol ospf backbone {
+  import all;
+  export where net ~ [ ::/0,
+    <%= join($nets6_self, ',\n    ') %> ];
+  area 0.0.0.0 {
+    interface 'bb-*' {
+      bfd true;
+    }
+  }
+}
+

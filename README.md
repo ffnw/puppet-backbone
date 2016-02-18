@@ -17,10 +17,11 @@ Manages backbone connections.
 
 ## Setup
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
 * puppet modules
   * ffnw-network
+  * ffnw-bird
 
 ### Beginning with backbone
 
