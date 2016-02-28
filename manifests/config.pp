@@ -1,6 +1,6 @@
 class backbone::config {
 
-  require router
+  include router
 
 }
 
