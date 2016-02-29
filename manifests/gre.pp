@@ -29,9 +29,9 @@ define backbone::gre (
 
   if !has_ip_address($endpoint) {
     network::inet::tunnel { "bb-${title}":
-      address   => $transfer,
+      address   => ip_address($transfer),
       mode      => 'gre',
-      endpoint  => $endpoint,
+      endpoint  => ip_address($endpoint),
       pre_up    => $ip4_rule_up,
       post_down => $ip4_rule_down,
     }
