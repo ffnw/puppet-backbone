@@ -1,5 +1,5 @@
 class backbone (
-  
+  Optional[String] $kernel_table = $backbone::params::kernel_table,
 ) inherits backbone::params {
 
   class { 'backbone::config': }

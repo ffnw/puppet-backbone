@@ -32,7 +32,9 @@ class { 'backbone': }
 ## Usage
 
 ```puppet
-class { 'backbone': }
+class { 'backbone':
+  kernel_table => '42',
+}
 
 backbone::gre { 'srv01':
   endpoint  => '1.2.3.4',
@@ -44,6 +46,7 @@ backbone::gre { 'srv01':
 ## Reference
 
 * class backbone
+  * kernel_table (optional)
 
 * define backbone::gre
   * endpoint
