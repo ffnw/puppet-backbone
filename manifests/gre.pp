@@ -10,6 +10,7 @@ define backbone::gre (
   validate_ip_address($endpoint)
   validate_ip_address($transfer)
 
+  $kernel_table = $backbone::kernel_table
   if ($kernel_table) {
     $ip4_rule_up   = [ "/bin/ip -4 rule add pref 31000 iif \$IFACE table ${kernel_table}",
                        "/bin/ip -4 rule add pref 31001 iif \$IFACE unreachable", ]
