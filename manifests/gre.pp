@@ -28,9 +28,6 @@ define backbone::gre (
   }
 
   if !has_ip_address($endpoint) {
-    network::interface { "bb-${title}":
-      method => 'allow-hotplug',
-    }
     network::inet::tunnel { "bb-${title}":
       address   => ip_address($transfer),
       mode      => 'gre',
