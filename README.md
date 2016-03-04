@@ -46,6 +46,8 @@ backbone::gre { 'srv01':
 ## Reference
 
 * class backbone
+  * ip (optional, default [])
+  * ip6 (optional, default [])
   * kernel_table (optional)
 
 * define backbone::gre
