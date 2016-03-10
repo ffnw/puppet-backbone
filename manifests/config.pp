@@ -8,15 +8,11 @@ class backbone::config inherits backbone {
   }
 
   $ip.each | $value | {
-    network::inet::loopback::post_up { "backbone ${value}":
-      cmd => "/bin/ip -4 addr add ${value} dev \$IFACE",
-    }
+    network::inet::loopback::post_up { "/bin/ip -4 addr add ${value} dev \$IFACE": }
   }
 
   $ip6.each | $value | {
-    network::inet6::loopback::post_up { "backbone ${value}":
-      cmd => "/bin/ip -6 addr add ${value} dev \$IFACE",
-    }
+    network::inet6::loopback::post_up { "/bin/ip -6 addr add ${value} dev \$IFACE": }
   }
 
 }
