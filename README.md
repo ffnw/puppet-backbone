@@ -17,12 +17,6 @@ Manages backbone connections.
 
 ## Setup
 
-### Setup Requirements
-
-* puppet modules
-  * ffnw-network
-  * ffnw-bird
-
 ### Beginning with backbone
 
 ```puppet
@@ -32,10 +26,6 @@ class { 'backbone': }
 ## Usage
 
 ```puppet
-class { 'backbone':
-  kernel_table => '42',
-}
-
 backbone::gre { 'srv01':
   endpoint  => '1.2.3.4',
   transfer  => '100.64.1.0/31',
@@ -48,7 +38,6 @@ backbone::gre { 'srv01':
 * class backbone
   * ip (optional, default [])
   * ip6 (optional, default [])
-  * kernel_table (optional)
 
 * define backbone::gre
   * endpoint
@@ -59,10 +48,6 @@ backbone::gre { 'srv01':
 
 ### OS compatibility
 * Debian 8
-
-### Dependencies
-* ffnw-network
-* ffnw-bird
 
 ## Development
 
