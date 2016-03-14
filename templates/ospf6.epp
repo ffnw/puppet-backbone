@@ -1,4 +1,4 @@
-<%- | $nets6_self,
+<%- | $nets_self6,
 | -%>
 # DO NOT EDIT!
 # This file is puppet generated.
@@ -13,7 +13,7 @@ protocol bfd backbone {
 protocol ospf backbone {
   import all;
   export where net ~ [ ::/0,
-    <%= join($nets6_self, ',\n    ') %> ];
+    <%= join($nets_self6, ',\n    ') %> ];
   area 0.0.0.0 {
     interface 'bb-*' {
       bfd true;
