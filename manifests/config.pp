@@ -15,5 +15,16 @@ class backbone::config inherits backbone {
     network::inet6::loopback::post_up { "/bin/ip -6 addr add ${value} dev \$IFACE": }
   }
 
+  file {
+    default:
+      ensure => file,
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0644';
+    '/etc/bird/bird.conf.d/backbone.conf':
+      content => epp('backbone/ospf.epp');
+    '/etc/bird/bird6.conf.d/backbone.conf':
+      content => epp('backbone/ospf6.epp');
+
 }
 
