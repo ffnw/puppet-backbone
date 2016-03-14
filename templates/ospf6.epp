@@ -1,3 +1,5 @@
+<%- | $nets6_self,
+| -%>
 # DO NOT EDIT!
 # This file is puppet generated.
 

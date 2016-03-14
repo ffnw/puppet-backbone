@@ -22,9 +22,9 @@ class backbone::config inherits backbone {
       group  => 'root',
       mode   => '0644';
     '/etc/bird/bird.conf.d/backbone.conf':
-      content => epp('backbone/ospf.epp');
+      content => epp('backbone/ospf.epp', { nets_self => $nets_self });
     '/etc/bird/bird6.conf.d/backbone.conf':
-      content => epp('backbone/ospf6.epp');
+      content => epp('backbone/ospf6.epp', { nets6_self => $nets6_self );
   }
 
 }
