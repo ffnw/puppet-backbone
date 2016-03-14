@@ -13,6 +13,7 @@ define backbone::gre (
   if !has_ip_address($endpoint) {
     network::inet::tunnel { "bb-${title}":
       address   => ip_address($transfer),
+      netmask   => ip_prefixlength($transfer),
       mode      => 'gre',
       endpoint  => ip_address($endpoint),
     }
