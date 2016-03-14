@@ -25,6 +25,7 @@ class backbone::config inherits backbone {
       content => epp('backbone/ospf.epp');
     '/etc/bird/bird6.conf.d/backbone.conf':
       content => epp('backbone/ospf6.epp');
+  }
 
 }
 
