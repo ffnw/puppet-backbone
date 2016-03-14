@@ -4,7 +4,7 @@
 # This file is puppet generated.
 
 protocol bfd backbone {
-  interface 'bb-*' {
+  interface "bb-*" {
     interval 200 ms;
     multiplier 10;
   }
@@ -13,7 +13,7 @@ protocol bfd backbone {
 protocol ospf backbone {
   import all;
   export where net ~ [ 0.0.0.0/0,
-    <%= join($nets_self, ',\n    ') %> ];
+    <%= join($nets_self, ",\n    ") %> ];
   area 0.0.0.0 {
     interface 'bb-*' {
       bfd true;
