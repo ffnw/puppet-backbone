@@ -3,20 +3,20 @@
 # DO NOT EDIT!
 # This file is puppet generated.
 
-protocol bfd backbone {
+protocol bfd 'backbone-bfd' {
   interface "bb-*" {
     interval 200 ms;
     multiplier 10;
   };
 }
 
-protocol ospf backbone {
+protocol ospf 'backbone-ospf' {
   import all;
   export where net ~ [ ::/0,
     <%= join($nets_self6, ",\n    ") %> ];
   area 0.0.0.0 {
-    interface 'bb-*' {
-      bfd true;
+    interface "bb-*" {
+      bfd;
     };
   };
 }
