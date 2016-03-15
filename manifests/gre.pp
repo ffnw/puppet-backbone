@@ -16,6 +16,7 @@ define backbone::gre (
       netmask   => "${ip_prefixlength($transfer)}",
       mode      => 'gre',
       endpoint  => ip_address($endpoint),
+      ttl       => 64,
     }
     if is_ip_address($transfer6) {
       network::inet6::static { "bb-${title}":
