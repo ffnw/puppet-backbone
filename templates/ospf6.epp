@@ -11,7 +11,10 @@ protocol bfd 'backbone-bfd' {
 }
 
 protocol ospf 'backbone-ospf' {
-  import all;
+  import filter {
+    if !(net ~ [ <%= join($nets_self6, ",\n      ") %> ]) then preference = 50;
+    accept;
+  };
   export where net ~ [ ::/0,
     <%= join($nets_self6, ",\n    ") %> ];
   area 0.0.0.0 {
