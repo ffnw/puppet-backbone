@@ -15,8 +15,8 @@ class backbone::config inherits backbone {
     network::inet6::loopback::post_up { "/bin/ip -6 addr add ${value} dev \$IFACE": }
   }
 
-  $nets_self_plus = $nets_self.map | $value | { "${nets_self}+" }
-  $nets_self6_plus = $nets_self6.map | $value | { "${nets_self6}+" }
+  $nets_self_plus = $nets_self.map | $value | { "${value}+" }
+  $nets_self6_plus = $nets_self6.map | $value | { "${value}+" }
 
   file {
     default:
