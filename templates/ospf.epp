@@ -1,4 +1,4 @@
-<%- | $nets_self,
+<%- | $nets_self_plus,
 | -%>
 # DO NOT EDIT!
 # This file is puppet generated.
@@ -12,11 +12,11 @@ protocol bfd 'backbone-bfd' {
 
 protocol ospf 'backbone-ospf' {
   import filter {
-    if !(net ~ [ <%= join($nets_self, ",\n      ") %> ]) then preference = 50;
+    if !(net ~ [ <%= join($nets_self_plus, ",\n      ") %> ]) then preference = 50;
     accept;
   };
   export where net ~ [ 0.0.0.0/0,
-    <%= join($nets_self, ",\n    ") %> ];
+    <%= join($nets_self_plus, ",\n    ") %> ];
   area 0.0.0.0 {
     interface "bb-*" {
       bfd;
