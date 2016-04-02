@@ -1,4 +1,5 @@
-<%- | $nets_self6_plus,
+<%- | $nets_self6,
+      $nets_self6_plus,
 | -%>
 # DO NOT EDIT!
 # This file is puppet generated.
@@ -15,12 +16,22 @@ protocol ospf 'backbone-ospf' {
     if !(net ~ [ <%= join($nets_self6_plus, ",\n      ") %> ]) then preference = 50;
     accept;
   };
-  export where net ~ [ ::/0,
-    <%= join($nets_self6_plus, ",\n    ") %> ];
+  export filter {
+    if proto ~ "ibgp-*" then reject;
+    if net ~ [ ::/0,
+      <%= join($nets_self6_plus, ",\n      ") %> ] then accept;
+    reject;
+  };
   area 0.0.0.0 {
     interface "bb-*" {
       bfd;
     };
   };
+}
+
+protocol static 'backbone-nets-self' {
+  <% $nets_self6.each | $value | { -%>
+  <%= $value %> reject;
+  <% } -%>
 }
 
