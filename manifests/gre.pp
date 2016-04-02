@@ -19,10 +19,9 @@ define backbone::gre (
       ttl       => 64,
     }
     if is_ip_address($transfer6) {
-      $ip = ip_network('fe80::/64', ip_offset($transfer6))
       network::inet6::static { "bb-${title}":
         address => $transfer6,
-        post_up => [ "ip -6 a add dev \$IFACE scope link ${ip}" ]
+        scope   => 'link',
       }
     }
   }
