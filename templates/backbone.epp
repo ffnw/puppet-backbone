@@ -31,7 +31,7 @@ protocol ospf 'backbone-ospf' {
 
 protocol static 'backbone-nets-self' {
 <% $nets_self.each | $value | { -%>
-  <%= $value %> reject;
+  route <%= $value %> reject;
 <% } -%>
 }
 
