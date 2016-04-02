@@ -30,8 +30,8 @@ protocol ospf 'backbone-ospf' {
 }
 
 protocol static 'backbone-nets-self' {
-  <% $nets_self6.each | $value | { -%>
+<% $nets_self6.each | $value | { -%>
   <%= $value %> reject;
-  <% } -%>
+<% } -%>
 }
 
